@@ -3,8 +3,6 @@ package com.project.questapp.entities;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,10 +29,9 @@ public class Post {
 	@Column(name = "id")
 	private int id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id",nullable = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	@JsonIgnore
 	private User user;
 	
 	@Column(name = "title")
@@ -43,4 +40,5 @@ public class Post {
 	@Lob
 	@Column(name = "text")
 	private String text;
-}
+}	
+

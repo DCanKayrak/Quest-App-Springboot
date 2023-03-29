@@ -18,6 +18,7 @@ import com.project.questapp.business.abstracts.PostService;
 import com.project.questapp.entities.Post;
 import com.project.questapp.requests.PostCreateRequest;
 import com.project.questapp.requests.PostUpdateRequest;
+import com.project.questapp.response.PostResponse;
 
 @RestController
 @RequestMapping("/api/posts")
@@ -31,7 +32,7 @@ public class PostController {
 	}
 	
 	@GetMapping
-	public List<Post> getAllPosts(@RequestParam Optional<Integer> userId){
+	public List<PostResponse> getAllPosts(@RequestParam Optional<Integer> userId){
 		return this.postService.getAllPosts(userId);
 	}
 	

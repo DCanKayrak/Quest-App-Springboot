@@ -15,13 +15,14 @@ public class PostResponse {
 	private String title;
 	private String text;
 	
-	private List<Post> postLikes;
+	private List<LikeResponse> postLikes;
 	
-	public PostResponse(Post entity) {
+	public PostResponse(Post entity,List<LikeResponse> likes) {
 		this.id = entity.getId();
 		this.userId = entity.getUser().getId();
 		this.userName = entity.getUser().getUsername();
 		this.title = entity.getTitle();
 		this.text = entity.getText();
+		this.postLikes = likes;
 	}
 }

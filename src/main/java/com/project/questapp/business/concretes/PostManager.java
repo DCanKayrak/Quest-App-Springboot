@@ -15,6 +15,7 @@ import com.project.questapp.entities.Post;
 import com.project.questapp.entities.User;
 import com.project.questapp.requests.PostCreateRequest;
 import com.project.questapp.requests.PostUpdateRequest;
+import com.project.questapp.response.LikeResponse;
 import com.project.questapp.response.PostResponse;
 
 @Service
@@ -39,8 +40,8 @@ public class PostManager implements PostService{
 		}
 		list = this.postRepository.findAll();
 		return list.stream().map(p -> {
-			
-			return new PostResponse(p);}).collect(Collectors.toList());
+			List<LikeResponse> likes = likeService.getAllLike(Optional.ofNullable(null),Optional.of(p.getId()));
+			return new PostResponse(p,likes);}).collect(Collectors.toList());
 		
 		
 	}
